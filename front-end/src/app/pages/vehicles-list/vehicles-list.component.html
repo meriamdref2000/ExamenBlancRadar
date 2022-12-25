@@ -1,0 +1,41 @@
+<div class="container">
+  <br/>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          <h2>Liste des véhicules</h2>
+          <div style="text-align: center">
+            <button class="btn btn-primary" (click)="addNewVehicle()">Ajouter un nouveau véhicule</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+
+    <div class="col-md-3" *ngFor="let item of vehicles">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          Immatriculation : {{item.registrationNumber}}
+        </div>
+        <div class="card-body text-sm-start">
+          <div style="text-align: center">
+            <img src="assets/vehicle.png" alt="car" width="100" height="100">
+            <br>
+            <h5>Marque : {{item.brand}}
+            <br>
+            Puissance fiscale : {{item.fiscalPower}}
+            <br>
+            Modèle : {{item.model}}
+            <br>
+              Type : {{item.type}}</h5>
+          <button type="button" class="btn btn-info" (click)="showOwners(item.registrationNumber)">Afficher les propriétaires</button>
+          </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="container" *ngIf="radars">
+  <br/>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          <h2>Gestion des infractions concernant des véhicules
+            suites à des dépassement de vitesses détectés par des radars automatiques
+          </h2>
+          <div style="text-align: center">
+            <button class="btn btn-primary" (click)="addNewRadar()">Ajouter un radar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          Nombre de radars
+        </div>
+        <div class="card-body text-sm-start">
+          <h3 style="text-align: center">{{totalRadarsNumber}}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          Radars actifs
+        </div>
+        <div class="card-body text-sm-start" style="text-align: center">
+          <h3 style="text-align: center">{{activeRadarsNumber}}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          Radars inactifs
+        </div>
+        <div class="card-body">
+          <h3 style="text-align: center">{{inactiveRadarsNumber}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <br/>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          Radars
+        </div>
+        <div class="card-body text-sm-start">
+          <table class="table table-sm" style="text-align: center">
+            <thead>
+            <tr>
+              <th>Non</th>
+              <th>Long</th>
+              <th>Lat</th>
+              <th>Alt</th>
+              <th>vitesse Maximale</th>
+              <th>Road</th>
+              <th>Etat</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let element of radars">
+              <td>{{element.name}}</td>
+              <td>{{element.longitude}}</td>
+              <td>{{element.latitude}}</td>
+              <td>{{element.altitude}}</td>
+              <td>{{element.maxSpeed}}</td>
+              <td>{{element.roadDesignation}}</td>
+              <td style="background-color: {{element.radarStatus=='ACTIVE'?'#39d539':'#e82828'}}">{{element.radarStatus}}</td>
+              <td>
+                <button [disabled]="element.radarStatus!='ACTIVE'" class="btn btn-sm btn-success"
+                        (click)="activateRadar(element.radarId)">Line Chart
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          Graphe de dépassement de vitesse
+        </div>
+        <div class="card-body text-sm-start">
+          <div class="chart-container">
+            <canvas id="MyChart">{{ chart }}</canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <br/> <br/>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          Liste des dépassements de vitesse
+        </div>
+        <div class="card-body text-sm-start">
+          <table class="table table-sm" style="text-align: center">
+            <thead>
+            <tr>
+              <th>Radar Id</th>
+              <th>Date</th>
+              <th>Véhicule</th>
+              <th>Vitesse</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let element of overs">
+              <td>{{element.overSpeedId}}</td>
+              <td>{{element.timeStamp}}</td>
+              <td>{{element.vehicleRegistrationNumber}}</td>
+              <td>{{element.vehicleSpeed}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

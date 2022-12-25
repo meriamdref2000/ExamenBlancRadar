@@ -1,0 +1,80 @@
+###
+GET http://localhost:8083/query/radars/all
+
+###
+# Get all radars
+GET http://localhost:8083/query/watchOverSpeeds
+
+###
+POST http://localhost:8080/commands/radar/create
+Content-Type: application/json
+
+{
+  "radarId": "1",
+  "name": "Radar 1",
+  "longitude": 1.0,
+  "latitude"
+  ":"
+  1.0,
+  "altitude": 1.0,
+  "maxSpeed": 1.0,
+  "roadDesignation": "A",
+  "radarStatus": "OFF"
+}
+
+###
+POST http://localhost:8080/commands/radar/create
+Content-Type: application/json
+
+{
+  "radarId": "2",
+  "name": "Radar 2",
+  "longitude": 1.0,
+  "latitude"
+  ":"
+  1.0,
+  "altitude": 1.0,
+  "maxSpeed": 1.0,
+  "roadDesignation": "B",
+  "radarStatus": "OFF"
+}
+
+###
+POST http://localhost:8080/commands/radar/create
+Content-Type: application/json
+
+{
+  "radarId": "3",
+  "name": "Radar 3",
+  "longitude": 1.0,
+  "latitude": 1.0,
+  "altitude": 1.0,
+  "maxSpeed": 1.0,
+  "roadDesignation": "C",
+  "radarStatus": "ACTIVE"
+}
+
+###
+GET http://localhost:8082/query/vehicles/all
+
+
+###
+POST http://localhost:8081/commands/vehicles/create
+Content-Type: application/json
+
+{
+  "registrationNumber": "12-C-2345",
+  "type": "CAR",
+  "brand": "A",
+  "model": "String",
+  "fiscalPower": 120,
+  "ownerName": "String",
+  "ownerNationalIdCard": "String",
+  "ownerEmail": "String",
+  "ownerPhoneNumber": "String",
+  "ownerAddress": "String"
+}
+
+
+###
+GET http://localhost:8091/query/contraventions
